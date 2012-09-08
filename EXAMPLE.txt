@@ -1,0 +1,54 @@
+Below is a sample pom.xml which demonstrates the plugin. Sequence diagrams source can be either added
+to the project as static files, or generated automatically in test code.
+
+Be sure to change the <sourceDirectory> and <outputDirectory>.
+Note in the example, these are Mac paths, and will be different for Windows.
+
+Add a text file called sequence.txt to the <outputDirectory> containing the following 4 lines :
+
+title Authentication Sequence
+Alice->Bob: Authentication Request
+note right of Bob: Bob thinks about it
+Bob->Alice: Authentication Response
+
+From the command line, in the same directory as the pom.xml, type "mvn test".
+This will run the plugin, and generate the sequence diagram image sequence.png in <outputDirectory>.
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>websequencediagram-plugin-example</groupId>
+  <artifactId>websequencediagram-plugin-example</artifactId>
+  <version>1.0.0</version>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.websequencediagrams</groupId>
+        <artifactId>maven-websequencediagrams-plugin</artifactId>
+        <version>0.0.1</version>
+
+        <executions>
+          <execution>
+            <phase>generate-resources</phase>
+            <configuration>
+              <style>modern-blue</style>
+              <sourceDirectory>/Users/efinery/Documents/wsd/source</sourceDirectory>
+              <outputDirectory>/Users/efinery/Documents/wsd/output</outputDirectory>
+              <keepSources>true</keepSources>
+            </configuration>
+            <goals>
+              <goal>generate-diagrams</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
