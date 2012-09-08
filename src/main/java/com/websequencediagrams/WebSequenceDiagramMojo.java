@@ -202,21 +202,4 @@ public class WebSequenceDiagramMojo extends AbstractMojo {
     return proxy;
   }
 
-  public static void main(String... args) throws MojoExecutionException, MojoFailureException, IOException {
-
-    File file = new File("/Users/efinery/Documents/APM rental scheme refactor notes.txt");
-
-    new Test().execute();
-  }
-
-  private static class Test extends WebSequenceDiagramMojo {
-
-    public Test() {
-      encoding = "UTF-8";
-      apiVersion = 1;
-      style = "modern-blue";
-      sourceDirectory = new File("/Users/efinery/Documents/wsd/source");
-      outputDirectory = new File("/Users/efinery/Documents/wsd/output");
-    }
-  }
 }
